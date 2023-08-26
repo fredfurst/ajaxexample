@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Esta página executa AJAX!</title>
+        <script>
+            function updtInfo(name) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // cool!
+                        document.getElementById("demonstracao").innerHTML = xhr.responseText;
+                        console.log("Rodei com name valendo: "+name);
+                        // fazer mais coisas?
+                    }
+                }
+                xhr.open("GET",name+'.html',true);
+                xhr.send();
+            };
+        </script>
+    </head>
+    <body>
+        <div id="demonstracao">Informação da Demonstração vai aqui!</div>
+        <select name="staff" onchange="updtInfo(this.value);">
+            <option value="">Escolha valor:</option>
+            <option value="charmander">Charmander</option>
+            <option value="bulbasaur">Bulbasaur</option>
+        </select>
+    </body>
+</html>
