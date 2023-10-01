@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista de Tarefas</title>
+    </head>
+    <body>
+        <h1>
+            Tarefas:
+        </h1>
+        <input type="text" id="nova">
+        <button onclick="adicionar()">+</button>
+        <div id="tarefas">
+        </div>
+        <script>
+            function adicionar() {
+                texto = document.getElementById("nova").value;
+                node = document.createTextNode(texto);
+                item = document.createElement("h3");
+                item.appendChild(node);
+                document.getElementById("tarefas").appendChild(item);
+            }
+        </script>
+    </body>
+</html>
