@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cota&ccedil;&otilde;es</title>
+    </head>
+    <body>
+        <h1>USD-BRL</h1>
+        <p id="valor"></p>
+        <script>
+            paragrafo = document.getElementById('valor');
+            dados = new XMLHttpRequest();
+            dados.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status ==200) {
+                    document.getElementById('valor').innerHTML = JSON.parse(dados.responseText)['USDBRL']['bid'];
+                    cotacao = JSON.parse(dados.responseText)['USDBRL']['bid'];
+                }
+            }
+            dados.open("GET", "https://economia.awesomeapi.com.br/last/usd-brl", true)
+            dados.send();
+            cotacao = 'R$ ?';
+            texto = document.createTextNode(`Valor ${cotacao}`);
+            paragrafo.appendChild(texto)
+        </script>
+    </body>
+</html>
